@@ -33,7 +33,7 @@ The laboratory sessions cover a range of topics, including but not limited to:
 
 To get started with the laboratory assignments and code samples, follow these steps:
 
-1. **Clone the Repository**: `git clone https://github.com/your-username/operating-systems-lab.git`
+1. **Clone the Repository**: `git clone https://github.com/Vortex1806/OSLAB.git`
 2. **Explore the Code**: Take a look at the Java and C code samples and assignments available in the repository.
 3. **Set Up Your Environment**: Follow the instructions provided in the `README.md` files within each assignment directory to set up your development environment.
 4. **Contribute**: If you have any improvements or additional resources to contribute, feel free to submit a pull request!
