@@ -26,7 +26,7 @@ public class fcfs {
       tt[i] = bt[i] + wt[i];
     }
     
-    System.out.println("\nProcesses ||" + " Burst Time ||" + " Arrival Time ||" + " Waiting Time ||" +" Turn-Around Time ");
+    System.out.println("\nProcesses ||" + " Burst Time ||" + " Waiting Time ||" +" Turn-Around Time ");
     for (int i = 0; i < n; i++) {
       awt = awt + wt[i];
       att = att + tt[i]; 
