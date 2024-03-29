@@ -1,13 +1,13 @@
 import java.util.*;
 public class Deadlock{
-    private int P;
-    private int R;
-    private void calculateNeed(int need[][],int alloc[][],int maxm[][]){
+    static int P;
+    static int R;
+    public static void calculateNeed(int need[][],int alloc[][],int maxm[][]){
         for(int i=0;i<P;i++){
             for(int j=0;j<R;j++) need[i][j]=maxm[i][j]-alloc[i][j];
         }
     }
-    private boolean isSafe(int processes[],int avail[],int alloc[][],int maxm[][]){
+    public static boolean isSafe(int processes[],int avail[],int alloc[][],int maxm[][]){
         int need[][]=new int[P][R];
         calculateNeed(need,alloc,maxm);
         boolean finish[]= new boolean[P];
@@ -42,23 +42,22 @@ public class Deadlock{
     }
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
-        Deadlock ds = new Deadlock();
         System.out.println("Enter the number of processes");
-        ds.P=sc.nextInt();
+        P=sc.nextInt();
         System.out.println("Enter the number of resources ");
-        ds.R=sc.nextInt();
-        int processes[]=new int[ds.P];
-        for (int i = 0; i < ds.P; i++) processes[i] = i;
-        int[] avail = new int[ds.R];
+        R=sc.nextInt();
+        int processes[]=new int[P];
+        for (int i = 0; i < P; i++) processes[i] = i;
+        int[] avail = new int[R];
         System.out.println("Enter the available instances of resources:"); 
-        for (int i = 0; i < ds.R; i++) avail[i] = sc.nextInt();
-        int[][] maxm = new int[ds.P][ds.R];
+        for (int i = 0; i < R; i++) avail[i] = sc.nextInt();
+        int[][] maxm = new int[P][R];
         System.out.println("Enter the maximum resources that can be allocated to processes:");
-        for (int i = 0; i < ds.P; i++) for (int j = 0; j < ds.R; j++) maxm[i][j] = sc.nextInt();
-        int[][] alloc = new int[ds.P][ds.R];
+        for (int i = 0; i < P; i++) for (int j = 0; j < R; j++) maxm[i][j] = sc.nextInt();
+        int[][] alloc = new int[P][R];
         System.out.println("Enter the resources allocated to processes:");
-        for (int i = 0; i < ds.P; i++) for (int j = 0; j < ds.R; j++) alloc[i][j] = sc.nextInt();
-        ds.isSafe(processes, avail, alloc, maxm);
+        for (int i = 0; i < P; i++) for (int j = 0; j < R; j++) alloc[i][j] = sc.nextInt();
+        isSafe(processes, avail, alloc, maxm);
         sc.close();
     }
 }
