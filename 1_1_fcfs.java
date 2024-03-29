@@ -1,40 +1,30 @@
-import java.util.Scanner;
-public class fcfs {
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    int bt[] = new int[20];
-    int wt[] = new int[20];
-    int tt[] = new int[20];
-    float awt = 0;
-    float att = 0;
-    int n = 0;
-    
-    System.out.print("Enter the number of processes: ");
-    n = sc.nextInt();
-    
-    System.out.println("\nEnter the Burst Time for each process.");
-    for (int i = 0; i < n; i++) {
-      bt[i] = sc.nextInt();
+import java.util.*;
+public class fcfs{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int bt[]=new int[10];
+        int wt[]=new int[10];
+        int tat[]=new int[10];
+        float totalwt=0;
+        float totaltat=0;
+        System.out.println("Enter the number of processes");
+        int n=sc.nextInt();
+        for(int i=0;i<n;i++){
+            System.out.println("Enter the burst time of process "+(i+1)+" :");
+            bt[i]=sc.nextInt();
+        }
+        for(int i=0;i<n;i++){
+            if(i==0) wt[i]=0;
+            else wt[i]=wt[i-1]+bt[i-1];
+            tat[i]=wt[i]+bt[i];
+            totalwt+=wt[i];
+            totaltat+=tat[i];
+        }
+        System.out.println("Process No\tBurst time\t waiting t\t Turn around t");
+        for(int i=0;i<n;i++){
+            System.out.println("\t"+(i+1)+"\t\t"+bt[i]+"\t\t"+wt[i]+"\t\t"+tat[i]);
+        }
+        System.out.println("Average waiting time is :"+(totalwt/n));
+        System.out.println("Average turn around time is :"+(totaltat/n));
     }
-  
-    wt[0] = 0;
-    for (int i = 1; i < n; i++) {
-      wt[i] = bt[i - 1] + wt[i - 1];
-    }
-  
-    for (int i = 0; i < n; i++) {
-      tt[i] = bt[i] + wt[i];
-    }
-    
-    System.out.println("\nProcesses ||" + " Burst Time ||" + " Waiting Time ||" +" Turn-Around Time ");
-    for (int i = 0; i < n; i++) {
-      awt = awt + wt[i];
-      att = att + tt[i]; 
-      System.out.println(i + 1 + "\t ||\t" + bt[i] + "\t||\t" + "\t||\t" + wt[i] + "\t||\t " + tt[i]);
-    }
-    awt = awt / n; 
-    att = att / n;
-    System.out.println("\nAverage waiting time = " + awt);
-    System.out.println("\nAverage turn around time = " + att);
-  }
 }
